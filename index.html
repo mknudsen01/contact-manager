@@ -11,15 +11,17 @@
   <div class="container">
     <h1>Your Contacts</h1>
     <div id="contacts">
-      <form id="addContact"action="#">
+      <a href="#" id="showAddForm">Add a Contact</a>
+      <form class="addContact hidden" action="#">
         <div>
-          <label for="firstName">First Name:</label><input id="firstName" type="text"/>
-          <label for="lastName">Last Name:</label><input id="lastName" type="text"/>
-          <label for="email">Email:</label><input id="email" type="text"/>
-          <label for="company">Company:</label><input id="company" type="text"/>
-          <label for="title">Title:</label><input id="title" type="text"/>
-          <label for="phone">Phone:</label><input id="phone" type="text"/>
-          <button id="add">Add Contact</button>
+          <input id="firstName" placeholder="First Name" type="text"/>
+          <input id="lastName" placeholder="Last Name"type="text"/>
+          <input id="email" placeholder="Email" type="text"/>
+          <input id="company" placeholder="Company" type="text"/>
+          <input id="title" placeholder="Title at company" type="text"/>
+          <input id="phone" placeholder="Phone Number" type="text"/>
+          <a id="add" class="submit" href="#">Add Contact</a>
+          <a id="hideForm" href="#">Hide Form</a>
         </div>
       </form>
     </div>

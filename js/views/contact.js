@@ -19,12 +19,12 @@ app.ContactView = Backbone.View.extend({
   showDetails: function(event){
     event.preventDefault();
     $(event.target).toggleClass('hidden');
-    $(event.target).parent().parent().next().toggleClass('hidden');
+    $(event.target).parent().parent().next().show('fast');
   },
 
   hideDetails: function(event) {
     event.preventDefault();
-    $(event.target).parent().parent().toggleClass('hidden');
+    $(event.target).parent().parent().hide('fast');
     $(event.target).parent().parent().prev().find('footer a').toggleClass('hidden');
   }
 });

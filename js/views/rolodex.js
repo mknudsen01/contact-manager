@@ -4,6 +4,8 @@ app.RolodexView = Backbone.View.extend({
   el: '#contacts',
 
   events: {
+    'click #showAddForm': 'showAddForm',
+    'click #hideForm': 'hideAddForm',
     'click #add': 'addContact'
   },
 
@@ -31,13 +33,23 @@ app.RolodexView = Backbone.View.extend({
     event.preventDefault();
     var formData = {};
 
-    $('#addContact div').children('input').each( function(i, el) {
+    $('.addContact div').children('input').each( function(i, el) {
       if( $( el ).val() !== ''){
         formData[el.id] = $(el).val();
       }
     });
 
     this.collection.add( new app.Contact(formData ) );
+  },
 
+  showAddForm: function(event){
+    event.preventDefault();
+    $(event.target).hide();
+    $('form').show('slow');
+  },
+
+  hideAddForm: function(event) {
+    $(event.target).parent().parent().prev().show('fast');
+    $(event.target).parent().parent().hide('slow');
   }
 });
