@@ -1,0 +1,52 @@
+.container {
+  margin: 5% auto;
+}
+
+#addContact{
+  margin: 3% auto;
+}
+.contactContainer {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #777;
+  border-radius: 5px;
+}
+
+.basics, .details {
+  width: 100%;
+  padding: 1%;
+}
+
+.basics header{
+  font-size: 3em;
+  width: 75%;
+  display: inline-block;
+}
+
+.basics > .main {
+  display: inline-block;
+  text-align: right;
+}
+
+.basics > .main > ul {
+  padding: 0;
+}
+
+.basics > .main > ul li {
+  font-size: 1em;
+  list-style: none;
+}
+
+.basics > .main > ul li.email {
+  font-style: italic;
+  padding-bottom: 1%;
+}
+
+.basics > footer > a, .details > footer > a{
+  color: #349DC9;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
