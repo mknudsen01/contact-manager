@@ -8,18 +8,46 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Your Contacts</h1>
-  <div id="contacts">
-
+  <div class="container">
+    <h1>Your Contacts</h1>
+    <div id="contacts">
+      <form id="addContact"action="#">
+        <div>
+          <label for="firstName">First Name:</label><input id="firstName" type="text"/>
+          <label for="lastName">Last Name:</label><input id="lastName" type="text"/>
+          <label for="email">Email:</label><input id="email" type="text"/>
+          <label for="company">Company:</label><input id="company" type="text"/>
+          <label for="title">Title:</label><input id="title" type="text"/>
+          <label for="phone">Phone:</label><input id="phone" type="text"/>
+          <button id="add">Add Contact</button>
+        </div>
+      </form>
+    </div>
   </div>
-
   <script type="text/template" id="contactTemplate">
-    <ul>
-        <li id="name"><%= name %></li>
-        <li id="email"><%= email %></li>
-        <li id="title"><%= title %></li>
-        <li id="phone"><%= phone %></li>
-    </ul>
+      <div class="basics">
+        <header id="fullName"><%= firstName %> <%= lastName %></header>
+        <div class="main">
+          <ul>
+            <li class="email" id="email"><%= email %></li>
+            <li class="phone" id="phone"><%= phone %></li>
+          </ul>
+        </div>
+        <footer id="showMore">
+          <a id="show" href="#">Show More</a>
+        </footer>
+      </div>
+      <div class="details hidden">
+        <div class="main">
+          <ul>
+            <li id="title"><%= title %></li>
+            <li id="company"><%= company %></li>
+          </ul>
+        </div>
+        <footer id="showLess">
+          <a id="hide" href="#">Show Less</a>
+        </footer>
+      </div>
   </script>
   <script src="js/lib/jquery.min.js"></script>
   <script src="js/lib/underscore-min.js"></script>
