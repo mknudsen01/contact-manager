@@ -4,8 +4,10 @@ $(function() {
 
   var contacts = [
     {
-      name: 'Test',
+      firstName: 'Test',
+      lastName: 'Testerson',
       email: 'test@email.com',
+      company: 'cool company',
       title: 'very important person',
       phone: '1234567890'
     },

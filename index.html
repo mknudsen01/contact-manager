@@ -10,14 +10,24 @@
 <body>
   <h1>Your Contacts</h1>
   <div id="contacts">
-
+    <form id="addContact"action="#">
+      <div>
+        <label for="firstName">First Name:</label><input id="firstName" type="text"/>
+        <label for="lastName">Last Name:</label><input id="lastName" type="text"/>
+        <label for="email">Email:</label><input id="email" type="text"/>
+        <label for="company">Company:</label><input id="company" type="text"/>
+        <label for="title">Title:</label><input id="title" type="text"/>
+        <label for="phone">Phone:</label><input id="phone" type="text"/>
+        <button id="add">Add Contact</button>
+      </div>
+    </form>
   </div>
-
   <script type="text/template" id="contactTemplate">
     <ul>
-        <li id="name"><%= name %></li>
+        <li id="fullName"><%= firstName %> <%= lastName %></li>
         <li id="email"><%= email %></li>
         <li id="title"><%= title %></li>
+        <li id="company"><%= company %></li>
         <li id="phone"><%= phone %></li>
     </ul>
   </script>
