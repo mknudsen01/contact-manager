@@ -28,7 +28,9 @@
   </div>
   <script type="text/template" id="contactTemplate">
       <div class="basics">
-        <header id="fullName"><%= firstName %> <%= lastName %></header>
+        <header id="fullName">
+          <span id="firstName"><%= firstName %></span> <span id="lastName"><%= lastName %></span>
+          </header>
         <div class="main">
           <ul>
             <li class="email" id="email"><%= email %></li>
