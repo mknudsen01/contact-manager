@@ -70,3 +70,24 @@ app.post( '/contacts', function( request, response ){
     }
   });
 });
+
+app.put( '/contacts/:id', function( request, response ) {
+  console.log( 'Updating contact ' + request.body.lastName );
+  return ContactModel.findById( request.params.id, function( err, contact ) {
+    contact.firstName = request.body.firstName || contact.firstName;
+    contact.lastName = request.body.lastName || contact.lastName;
+    contact.title = request.body.title || contact.title;
+    contact.company = request.body.company || contact.company;
+    contact.email = request.body.email || contact.email;
+    contact.phone = request.body.phone || contact.phone;
+
+    return contact.save( function( err ) {
+      if(!err) {
+        console.log( 'contact updated' );
+        return response.send( contact );
+      } else {
+        console.log( err );
+      }
+    });
+  });
+});
