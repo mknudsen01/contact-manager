@@ -11,7 +11,7 @@ app.ContactView = Backbone.View.extend({
     'click .delete': 'deleteContact',
     'dblclick': 'edit',
     'blur .editing': 'close',
-    'keypress .editing': 'updateOnEnter'
+    'keypress .editing': 'updateOnEnter',
   },
 
   render: function(){
@@ -50,6 +50,8 @@ app.ContactView = Backbone.View.extend({
 
     if(value){
       this.model.save(attribute, value);
+    } else {
+      $(event.target).text(this.model.attributes[attribute]);
     }
 
     $(event.target).attr('contenteditable', false);
