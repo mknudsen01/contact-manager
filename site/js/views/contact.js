@@ -7,7 +7,8 @@ app.ContactView = Backbone.View.extend({
 
   events: {
     'click #show': 'showDetails',
-    'click #hide': 'hideDetails'
+    'click #hide': 'hideDetails',
+    'click .delete': 'deleteContact'
   },
 
   render: function(){
@@ -26,5 +27,10 @@ app.ContactView = Backbone.View.extend({
     event.preventDefault();
     $(event.target).parent().parent().hide('fast');
     $(event.target).parent().parent().prev().find('footer a').toggleClass('hidden');
+  },
+
+  deleteContact: function(){
+    this.model.destroy();
+    this.remove();
   }
 });
