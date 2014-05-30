@@ -10,16 +10,21 @@ app.RolodexView = Backbone.View.extend({
   },
 
   initialize: function(){
+    this.contactViews = [];
     this.collection = new app.Rolodex();
     this.collection.fetch({reset: true});
     this.render();
 
     this.listenTo( this.collection, 'add', this.renderContact );
     this.listenTo( this.collection, 'reset', this.render);
+    this.listenTo( this.collection, 'change:lastName', this.render);
+    // this.listenTo( this.collection, 'all', this.dothing);
   },
 
   render: function() {
-    this.collection.each( function( item ) {
+    this.clearContacts();
+    var contacts = this.collection.sortByAlphabet();
+    _.each(contacts, function( item ) {
       this.renderContact( item );
     }, this );
   },
@@ -28,6 +33,7 @@ app.RolodexView = Backbone.View.extend({
     var contactView = new app.ContactView({
       model: item
     });
+    this.contactViews.push(contactView);
     this.$el.append( contactView.render().el );
   },
 
@@ -55,5 +61,12 @@ app.RolodexView = Backbone.View.extend({
   hideAddForm: function(event) {
     $(event.target).parent().parent().prev().show('fast');
     $(event.target).parent().parent().hide('slow');
+  },
+
+  clearContacts:function(){
+    _.each(this.contactViews, function(view){
+      view.remove();
+    });
+    this.contactViews = [];
   }
 });
