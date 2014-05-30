@@ -41,6 +41,16 @@ app.get( '/contacts', function( request, response ) {
   });
 });
 
+app.get( '/contacts/:id', function( request, response ) {
+    return ContactModel.findById( request.params.id, function( err, contact ) {
+        if( !err ) {
+            return response.send( contact );
+        } else {
+            return console.log( err );
+        }
+    });
+});
+
 app.post( '/contacts', function( request, response ){
   var contact = new ContactModel({
     firstName: request.body.firstName,
