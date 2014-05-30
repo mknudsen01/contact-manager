@@ -91,3 +91,17 @@ app.put( '/contacts/:id', function( request, response ) {
     });
   });
 });
+
+app.delete( '/contacts/:id', function( request, response ){
+  console.log( 'Deleting contact with id: ' + request.params.id );
+  return ContactModel.findById( request.params.id, function( err, contact) {
+    return contact.remove( function( err ){
+      if(!err){
+        console.log( 'Contact removed' );
+        return response.send('');
+      } else {
+        console.log( err );
+      }
+    });
+  });
+});
