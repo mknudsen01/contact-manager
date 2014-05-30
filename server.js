@@ -18,6 +18,19 @@ app.listen( port, function() {
   console.log( 'Express server listening on port %d in %s mode', port, app.settings.env);
 });
 
+mongoose.connect( 'mongodb://localhost/contacts_database' );
+
+var Contact = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  title: String,
+  company: String,
+  email: String,
+  phone: String
+});
+
+var ContactModel = mongoose.model( 'Contact', Contact );
+
 app.get( '/', function( request, response ) {
   response.send( 'Contacts API is running' );
 });
