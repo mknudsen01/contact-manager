@@ -1,46 +1,5 @@
 var app = app || {};
-
+var ENTER_KEY = 13;
 $(function() {
-
-  var contacts = [
-    {
-      firstName: 'Test',
-      lastName: 'Testerson',
-      email: 'test@email.com',
-      company: 'cool company',
-      title: 'very important person',
-      phone: '1234567890'
-    },
-
-    {
-      firstName: 'Test',
-      lastName: 'Testerson',
-      email: 'test@email.com',
-      company: 'cool company',
-      title: 'very important person',
-      phone: '1234567890'
-    },
-
-    {
-      firstName: 'Test',
-      lastName: 'Testerson',
-      email: 'test@email.com',
-      company: 'cool company',
-      title: 'very important person',
-      phone: '1234567890'
-    },
-
-    {
-      firstName: 'Test',
-      lastName: 'Testerson',
-      email: 'test@email.com',
-      company: 'cool company',
-      title: 'very important person',
-      phone: '1234567890'
-    },
-
-  ];
-
-
-  new app.RolodexView( contacts );
+  new app.RolodexView();
 });
