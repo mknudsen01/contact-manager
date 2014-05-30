@@ -39,6 +39,8 @@ app.RolodexView = Backbone.View.extend({
       if( $( el ).val() !== ''){
         formData[el.id] = $(el).val();
       }
+
+      $(el).val('');
     });
 
     this.collection.create( formData );
