@@ -40,3 +40,23 @@ app.get( '/contacts', function( request, response ) {
     }
   });
 });
+
+app.post( '/contacts', function( request, response ){
+  var contact = new ContactModel({
+    firstName: request.body.firstName,
+    lastName: request.body.lastName,
+    title: request.body.title,
+    company: request.body.company,
+    email: request.body.email,
+    phone: request.body.phone
+  });
+
+  return contact.save( function( err ){
+    if(!err){
+      console.log( 'created' );
+      return response.send( contact );
+    } else {
+      console.log( err );
+    }
+  });
+});
