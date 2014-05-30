@@ -9,11 +9,13 @@ app.RolodexView = Backbone.View.extend({
     'click #add': 'addContact'
   },
 
-  initialize: function( initialContacts ){
-    this.collection = new app.Rolodex( initialContacts );
+  initialize: function(){
+    this.collection = new app.Rolodex();
+    this.collection.fetch({reset: true});
     this.render();
 
     this.listenTo( this.collection, 'add', this.renderContact );
+    this.listenTo( this.collection, 'reset', this.render);
   },
 
   render: function() {
@@ -39,7 +41,7 @@ app.RolodexView = Backbone.View.extend({
       }
     });
 
-    this.collection.add( new app.Contact(formData ) );
+    this.collection.create( formData );
   },
 
   showAddForm: function(event){
