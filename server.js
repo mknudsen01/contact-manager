@@ -16,4 +16,8 @@ app.configure( function() {
 var port = 1414;
 app.listen( port, function() {
   console.log( 'Express server listening on port %d in %s mode', port, app.settings.env);
-})
+});
+
+app.get( '/', function( request, response ) {
+  response.send( 'Contacts API is running' );
+});
