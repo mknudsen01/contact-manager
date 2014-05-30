@@ -31,6 +31,12 @@ var Contact = new mongoose.Schema({
 
 var ContactModel = mongoose.model( 'Contact', Contact );
 
-app.get( '/', function( request, response ) {
-  response.send( 'Contacts API is running' );
+app.get( '/contacts', function( request, response ) {
+  return ContactModel.find( function(err, contacts ) {
+    if(!err) {
+      return response.send( contacts );
+    } else {
+      return console.log( err );
+    }
+  });
 });
