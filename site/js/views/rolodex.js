@@ -6,7 +6,8 @@ app.RolodexView = Backbone.View.extend({
   events: {
     'click #showAddForm': 'showAddForm',
     'click #hideForm': 'hideAddForm',
-    'click #add': 'addContact'
+    'click #add': 'addContact',
+    'keyup #search': 'search'
   },
 
   initialize: function(){
@@ -24,14 +25,14 @@ app.RolodexView = Backbone.View.extend({
   render: function() {
     this.clearContacts();
     var contacts = this.collection.sortByAlphabet();
-    _.each(contacts, function( item ) {
-      this.renderContact( item );
+    _.each(contacts, function( contact ) {
+      this.renderContact( contact );
     }, this );
   },
 
-  renderContact: function( item ){
+  renderContact: function( contact ){
     var contactView = new app.ContactView({
-      model: item
+      model: contact
     });
     this.contactViews.push(contactView);
     this.$el.append( contactView.render().el );
@@ -68,5 +69,53 @@ app.RolodexView = Backbone.View.extend({
       view.remove();
     });
     this.contactViews = [];
+  },
+
+  search: function(){
+    var view = this;
+    var searchTerm = $(event.target).val();
+    // debugger
+    var matches = _.filter(this.collection.models,function(contact){
+      return view.filterContacts(contact, searchTerm);
+    });
+    this.renderMatches(matches);
+  },
+
+  filterContacts: function(contact, searchTerm){
+    var toCheck = ["firstName", "lastName", "phone", "email", "title", "company"];
+    for(var i = 0; i< toCheck.length; i++){
+      var attribute = toCheck[i];
+      var value = contact.attributes[attribute].toLowerCase();
+      if(value.indexOf(searchTerm.toLowerCase()) > -1){
+        console.log("match for ", contact.attributes.lastName, ": ", attribute);
+        return true;
+      }
+    }
+    return false;
+  },
+
+  renderMatches: function(matches){
+    this.clearContacts();
+    sortedMatches = this.sortByAlphabet(matches);
+    // var contacts = this.collection.sortByAlphabet();
+    _.each(sortedMatches, function( contact ) {
+      this.renderContact( contact );
+    }, this );
+  },
+
+  sortByAlphabet: function(contacts){
+    var sorted = contacts.sort(function(a,b){
+      if(a.attributes.lastName.toLowerCase() > b.attributes.lastName.toLowerCase()){
+        return 1;
+      }
+      if(a.attributes.lastName.toLowerCase() < b.attributes.lastName.toLowerCase()){
+        return -1;
+      }
+      return 0;
+    });
+    // var sorted = contacts.sortBy(function(contact){
+    //   return contact.attributes.lastName.toLowerCase();
+    // });
+    return sorted;
   }
 });
