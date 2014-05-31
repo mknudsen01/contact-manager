@@ -1,6 +1,70 @@
+.first{
+  margin: 1% auto 0 auto;
+}
+
+.last{
+  margin: 0 auto 1% auto;
+}
+
+.go{
+  background-color: #27ae60;
+  transition: .5s all ease;
+}
+
+.go:hover{
+  background-color: #2ecc71;
+  transition: .5s all ease;
+}
+
+.danger{
+  background-color: #c0392b;
+  transition: .5s all ease;
+}
+
+.danger:hover{
+  background-color: #e74c3c;
+  transition: .5s all ease;
+}
+
 .container {
   margin: 5% auto;
   width: 80%;
+}
+
+nav{
+  background-color: #F2F2F2;
+  box-sizing: border-box;
+  padding: 1%;
+  border-radius: 5px;
+  width: 100%;
+  display: inline-block;
+}
+
+nav > input {
+  font-size: 2em;
+  border: none;
+  border-radius: 5px;
+  margin: 0 3%;
+}
+
+nav > h1{
+  font-size: 3em;
+  color: #343434;
+}
+
+nav > a{
+  color: white;
+  font-size: 2em;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 1% 2%;
+  background-color: #27ae60;
+  transition: 0.5s all ease;
+}
+
+nav > a:hover{
+  background-color: #2ecc71;
+  transition: 0.5s all ease;
 }
 
 h1 {
@@ -8,11 +72,7 @@ h1 {
   font-size: 4em;
   padding: 0;
   margin: 0;
-}
-
-#showAddForm{
-  color: #349DC9;
-  text-decoration: none;
+  display:inline;
 }
 
 #search{
@@ -21,8 +81,11 @@ h1 {
 
 /* FORM */
 .addContact {
-  margin: 3% auto;
+  box-sizing: border-box;
+  margin: 0 auto 3% auto;
+  padding: 3%;
   width: 100%;
+  background-color: #F2F2F2;
 }
 
 .addContact a{
@@ -38,24 +101,19 @@ h1 {
 .addContact input {
   width: 100%;
   font-size: 2em;
+  border: none;
+  margin-bottom: 3px;
 }
 
-.addContact a#add {
-  background-color: #27ae60;
+.addContact a#add, #hideForm {
   border-radius: 5px;
   font-size: 2em;
   color: white;
   text-decoration: none;
   text-align: center;
-  margin: 1% auto;
-  padding: 10px;
+  padding: 10px 0;
   display: inline-block;
-  width: 98%;
-  transition: .5s all ease;
-}
-
-.addContact a#add:hover{
-  background-color: #2ecc71;
+  width: 49%;
   transition: .5s all ease;
 }
 
@@ -80,7 +138,7 @@ h1 {
 
 .basics > .main {
   display: inline-block;
-  text-align: right;
+  text-align: left;
 }
 
 .basics > .main > ul {

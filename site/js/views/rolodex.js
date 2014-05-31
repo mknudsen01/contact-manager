@@ -51,6 +51,7 @@ app.RolodexView = Backbone.View.extend({
     });
 
     this.collection.create( formData );
+    this.hideAddForm();
   },
 
   showAddForm: function(event){
@@ -60,8 +61,10 @@ app.RolodexView = Backbone.View.extend({
   },
 
   hideAddForm: function(event) {
-    $(event.target).parent().parent().prev().show('fast');
-    $(event.target).parent().parent().hide('slow');
+    var that = this;
+    this.$el.find('form').hide('slow', function(){
+      that.$el.find('#showAddForm').fadeIn('slow');
+    });
   },
 
   clearContacts:function(){

@@ -9,11 +9,13 @@
 </head>
 <body>
   <div class="container">
-    <h1>Your Contacts</h1>
     <div id="contacts">
-      <a href="#" id="showAddForm">Add a Contact</a>
-      <input id="search" type="text" placeholder="search">
-      <form class="addContact hidden" action="#">
+      <nav>
+        <h1>Your Contacts</h1>
+        <input id="search" type="text" placeholder="search" autocomplete="off">
+        <a href="#" id="showAddForm">Add a Contact</a>
+      </nav>
+      <form class="addContact hidden" action="#" autocomplete="off">
         <div>
           <input id="firstName" placeholder="First Name" type="text"/>
           <input id="lastName" placeholder="Last Name"type="text"/>
@@ -21,8 +23,8 @@
           <input id="company" placeholder="Company" type="text"/>
           <input id="title" placeholder="Title at company" type="text"/>
           <input id="phone" placeholder="Phone Number" type="text"/>
-          <a id="add" class="submit" href="#">Add Contact</a>
-          <a id="hideForm" href="#">Hide Form</a>
+          <a id="add" class="first go" href="#">Add Contact</a>
+          <a id="hideForm" class="last danger" href="#">Cancel</a>
         </div>
       </form>
     </div>
