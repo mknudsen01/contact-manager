@@ -5,16 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Contact Manager</title>
   <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/grid.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/media_queries.css">
 </head>
 <body>
-  <div class="container">
-    <div id="contacts">
-      <nav>
-        <h1>Your Contacts</h1>
-        <input id="search" type="text" placeholder="search" autocomplete="off">
-        <a href="#" id="showAddForm">Add a Contact</a>
+  <section class="container">
+    <section id="contacts">
+      <nav class="onerow">
+        <h1 class="col3">Contax</h1>
+        <input class="col5" id="search" type="text" placeholder="search" autocomplete="off">
+        <a class="col4 last" href="#" id="showAddForm">Add a Contact</a>
       </nav>
+      <section class="col12 letters">
+      </section>
       <form class="addContact hidden" action="#" autocomplete="off">
         <div>
           <input id="firstName" placeholder="First Name" type="text"/>
@@ -27,8 +31,8 @@
           <a id="hideForm" class="last danger" href="#">Cancel</a>
         </div>
       </form>
-    </div>
-  </div>
+    </section>
+  </section>
   <script type="text/template" id="contactTemplate">
       <div class="basics">
         <header id="fullName">

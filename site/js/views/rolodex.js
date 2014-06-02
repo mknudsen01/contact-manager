@@ -7,7 +7,8 @@ app.RolodexView = Backbone.View.extend({
     'click #showAddForm': 'showAddForm',
     'click #hideForm': 'hideAddForm',
     'click #add': 'addContact',
-    'keyup #search': 'search'
+    'keyup #search': 'search',
+    'click .letter': 'filterLetter'
   },
 
   initialize: function(){
@@ -120,5 +121,10 @@ app.RolodexView = Backbone.View.extend({
     //   return contact.attributes.lastName.toLowerCase();
     // });
     return sorted;
+  },
+
+  filterLetter: function(event){
+    $('.active-letter').toggleClass('active-letter');
+    $(event.target).toggleClass('active-letter');
   }
 });

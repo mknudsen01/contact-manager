@@ -26,15 +26,15 @@
   transition: .5s all ease;
 }
 
-.container {
+/*.container {
   margin: 5% auto;
   width: 80%;
-}
+}*/
 
 nav{
   background-color: #F2F2F2;
   box-sizing: border-box;
-  padding: 1%;
+  /*padding: 1%;*/
   border-radius: 5px;
   width: 100%;
   display: inline-block;
@@ -44,20 +44,22 @@ nav > input {
   font-size: 2em;
   border: none;
   border-radius: 5px;
-  margin: 0 3%;
+  padding: 0; /*default is 1px for inputs */
 }
 
 nav > h1{
   font-size: 3em;
   color: #343434;
+  text-align: left;
 }
 
 nav > a{
   color: white;
   font-size: 2em;
+  text-align: center;
   text-decoration: none;
   border-radius: 5px;
-  padding: 1% 2%;
+  padding: 1% 0;
   background-color: #27ae60;
   transition: 0.5s all ease;
 }
@@ -75,9 +77,39 @@ h1 {
   display:inline;
 }
 
-#search{
-  margin-bottom: 1%;
+.letters{
+  text-align: center;
+  background-color: #F2F2F2;
+  padding: 1% 0;
 }
+
+.letter{
+  display: inline-block;
+  width: 3.5%;
+  font-size: 1em;
+  /*margin: 0 0.3%;*/
+  padding: 1% 0;
+  /*padding-right: 0.8%;*/
+  background-color: #95a5a6;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 5px;
+  border-right: 1px solid white;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  transition: 0.3s all ease;
+}
+
+.letter:hover{
+  background-color: #89D0FF;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+
+ .active-letter, .letter:active{
+  background-color:#3DB1FF;
+  transition: 0.3s all ease;
+ }
 
 /* FORM */
 .addContact {

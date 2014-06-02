@@ -11,7 +11,7 @@ app.ContactView = Backbone.View.extend({
     'click .delete': 'deleteContact',
     'dblclick': 'edit',
     'blur .editing': 'close',
-    'keypress .editing': 'updateOnEnter',
+    'keypress .editing': 'updateOnEnter'
   },
 
   render: function(){
