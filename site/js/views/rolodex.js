@@ -85,9 +85,9 @@ app.RolodexView = Backbone.View.extend({
   },
 
   filterContacts: function(contact, searchTerm){
-    var toCheck = ["firstName", "lastName", "phone", "email", "title", "company"];
-    for(var i = 0; i< toCheck.length; i++){
-      var attribute = toCheck[i];
+
+    for(var i = 0; i< TO_CHECK.length; i++){
+      var attribute = TO_CHECK[i];
       var value = contact.attributes[attribute].toLowerCase();
       if(value.indexOf(searchTerm.toLowerCase()) > -1){
         console.log("match for ", contact.attributes.lastName, ": ", attribute);
