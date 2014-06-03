@@ -43,14 +43,13 @@ app.RolodexView = Backbone.View.extend({
     event.preventDefault();
     var formData = {};
 
-    $('.addContact div').children('input').each( function(i, el) {
+    $('.addContact section').children('input').each( function(i, el) {
       if( $( el ).val() !== ''){
         formData[el.id] = $(el).val();
       }
 
       $(el).val('');
     });
-
     this.collection.create( formData );
     this.hideAddForm();
   },
