@@ -5,7 +5,8 @@ app.Contact = Backbone.Model.extend({
     name: 'No name',
     email: 'No email',
     phone: 'No phone number',
-    title: 'No title'
+    title: 'No title',
+    city: 'No location set'
   },
 
   parse: function( response ){
