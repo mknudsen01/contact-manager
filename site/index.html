@@ -5,55 +5,65 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Contact Manager</title>
   <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/grid.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/media_queries.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Your Contacts</h1>
-    <div id="contacts">
-      <a href="#" id="showAddForm">Add a Contact</a>
-      <input id="search" type="text" placeholder="search">
-      <form class="addContact hidden" action="#">
-        <div>
-          <input id="firstName" placeholder="First Name" type="text"/>
-          <input id="lastName" placeholder="Last Name"type="text"/>
-          <input id="email" placeholder="Email" type="text"/>
-          <input id="company" placeholder="Company" type="text"/>
-          <input id="title" placeholder="Title at company" type="text"/>
-          <input id="phone" placeholder="Phone Number" type="text"/>
-          <a id="add" class="submit" href="#">Add Contact</a>
-          <a id="hideForm" href="#">Hide Form</a>
-        </div>
+  <section class="container">
+    <section id="contacts">
+      <nav class="onerow">
+        <h1 class="col3">Contax</h1>
+        <input class="col5" id="search" type="text" placeholder="search" autocomplete="off">
+        <a class="col4 last" href="#" id="showAddForm">Add a Contact</a>
+      </nav>
+      <section class="col12 letters">
+      </section>
+      <form class="addContact hidden" action="#" autocomplete="off">
+        <section class="inputs push3 col6">
+          <input id="firstName" class="onerow" placeholder="First Name" type="text"/>
+          <input id="lastName" class="onerow" placeholder="Last Name"type="text"/>
+          <input id="city" class="onerow" placeholder="City, State" type="text"/>
+          <input id="email" class="onerow" placeholder="Email" type="text"/>
+          <input id="company" class="onerow" placeholder="Company" type="text"/>
+          <input id="title" class="onerow" placeholder="Title at company" type="text"/>
+          <input id="phone" class="onerow" placeholder="Phone Number" type="text"/>
+          <section class="buttons onerow">
+            <a id="add" class="add go col6" href="#">Add Contact</a>
+            <a id="hideForm" class="cancel danger col6 last" href="#">Cancel</a>
+          </section>
+        </section>
       </form>
-    </div>
-  </div>
+    </section>
+  </section>
+
   <script type="text/template" id="contactTemplate">
-      <div class="basics">
-        <header id="fullName">
+      <section class="basics col12">
+        <section class="names col7">
           <span id="firstName"><%= firstName %></span> <span id="lastName"><%= lastName %></span>
           </header>
-        <div class="main">
-          <ul>
-            <li class="email" id="email"><%= email %></li>
-            <li class="phone" id="phone"><%= phone %></li>
-          </ul>
-        </div>
-        <footer id="showMore">
-          <a id="show" href="#">Show More</a>
-          <button class="delete">Delete Contact</button>
-        </footer>
-      </div>
-      <div class="details hidden">
-        <div class="main">
-          <ul>
-            <li id="title"><%= title %></li>
-            <li id="company"><%= company %></li>
-          </ul>
-        </div>
-        <footer id="showLess">
-          <a id="hide" href="#">Show Less</a>
-        </footer>
-      </div>
+        </section>
+        <span id="city" class="city col4"><%= city %></span>
+        <span class="more col1 last">
+          <div>&or;</div>
+        </span>
+      </section>
+      <section class="details col12 hidden">
+        <section class="work col12">
+          <span class="job col7">
+            <span id="title"><%= title %></span>, <span class="company" id="company"><%= company %></span>
+          </span>
+        </section>
+        <section class="contact-detail-row col12">
+          <label class="bold col1" for="email">Email:</label><span class="email col5" id="email"><%= email %></span>
+        </section>
+        <section class="contact-detail-row col12">
+          <label class="bold col1" for="phone">Phone:</label><span class="phone col3 last" id="phone"><%= phone %></span>
+        </section>
+        <section class="delete col12">
+          <a href="#" class="danger push9 col2 last">Delete Contact</a>
+        </section>
+      </section>
   </script>
   <script src="js/lib/jquery.min.js"></script>
   <script src="js/lib/underscore-min.js"></script>

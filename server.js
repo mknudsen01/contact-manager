@@ -26,7 +26,8 @@ var Contact = new mongoose.Schema({
   title: String,
   company: String,
   email: String,
-  phone: String
+  phone: String,
+  city: String
 });
 
 var ContactModel = mongoose.model( 'Contact', Contact );
@@ -58,7 +59,8 @@ app.post( '/contacts', function( request, response ){
     title: request.body.title,
     company: request.body.company,
     email: request.body.email,
-    phone: request.body.phone
+    phone: request.body.phone,
+    city: request.body.city
   });
 
   return contact.save( function( err ){
@@ -79,6 +81,7 @@ app.put( '/contacts/:id', function( request, response ) {
     contact.title = request.body.title || contact.title;
     contact.company = request.body.company || contact.company;
     contact.email = request.body.email || contact.email;
+    contact.city = request.body.city || contact.city;
     contact.phone = request.body.phone || contact.phone;
 
     return contact.save( function( err ) {

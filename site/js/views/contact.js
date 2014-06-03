@@ -1,17 +1,17 @@
 var app = app || {};
 
 app.ContactView = Backbone.View.extend({
-  tagName: 'div',
+  tagName: 'article',
   className: 'contactContainer',
   template: _.template( $('#contactTemplate' ).html() ),
 
   events: {
-    'click #show': 'showDetails',
+    'click .more': 'showDetails',
     'click #hide': 'hideDetails',
     'click .delete': 'deleteContact',
     'dblclick': 'edit',
     'blur .editing': 'close',
-    'keypress .editing': 'updateOnEnter',
+    'keypress .editing': 'updateOnEnter'
   },
 
   render: function(){
@@ -20,9 +20,10 @@ app.ContactView = Backbone.View.extend({
   },
 
   showDetails: function(event){
-    event.preventDefault();
-    $(event.target).toggleClass('hidden');
-    $(event.target).parent().parent().next().show('fast');
+    // if(this.$el.find('.details').display)
+    this.$el.find('.details').toggle('fast');
+    this.$el.find('.more').toggleClass('flip');
+
   },
 
   hideDetails: function(event) {

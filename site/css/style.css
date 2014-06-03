@@ -1,6 +1,60 @@
-.container {
-  margin: 5% auto;
-  width: 80%;
+.go{
+  background-color: #27ae60;
+  transition: .5s all ease;
+}
+
+.go:hover{
+  background-color: #2ecc71;
+  transition: .5s all ease;
+}
+
+.danger{
+  color: white;
+  background-color: #c0392b;
+  transition: .5s all ease;
+}
+
+.danger:hover{
+  background-color: #e74c3c;
+  transition: .5s all ease;
+}
+
+nav{
+  background-color: #F2F2F2;
+  box-sizing: border-box;
+  /*padding: 1%;*/
+  border-radius: 5px;
+  width: 100%;
+  display: inline-block;
+}
+
+nav > input {
+  font-size: 2em;
+  border: none;
+  border-radius: 5px;
+  padding: 0; /*default is 1px for inputs */
+}
+
+nav > h1{
+  font-size: 3em;
+  color: #343434;
+  text-align: left;
+}
+
+nav > a{
+  color: white;
+  font-size: 2em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 1% 0;
+  background-color: #27ae60;
+  transition: 0.5s all ease;
+}
+
+nav > a:hover{
+  background-color: #2ecc71;
+  transition: 0.5s all ease;
 }
 
 h1 {
@@ -8,21 +62,47 @@ h1 {
   font-size: 4em;
   padding: 0;
   margin: 0;
+  display:inline;
 }
 
-#showAddForm{
-  color: #349DC9;
-  text-decoration: none;
+.letters{
+  text-align: center;
+  background-color: #F2F2F2;
+  padding: 1% 0;
 }
 
-#search{
-  margin-bottom: 1%;
+.letter{
+  display: inline-block;
+  width: 3.5%;
+  padding: 1% 0;
+  background-color: #95a5a6;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 5px;
+  border-right: 1px solid white;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  transition: 0.3s all ease;
 }
+
+.letter:hover{
+  background-color: #89D0FF;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+
+ .active-letter, .letter:active{
+  background-color:#3DB1FF;
+  transition: 0.3s all ease;
+ }
 
 /* FORM */
 .addContact {
-  margin: 3% auto;
+  box-sizing: border-box;
+  margin: 0 auto 3% auto;
+  padding: 3%;
   width: 100%;
+  background-color: #F2F2F2;
 }
 
 .addContact a{
@@ -30,78 +110,119 @@ h1 {
   text-decoration: none;
 }
 
-.addContact div {
-  width: 50%;
-  margin: 0 auto;
+.addContact .inputs {
+  /*margin: 0 auto;*/
 }
 
 .addContact input {
-  width: 100%;
   font-size: 2em;
+  border: none;
+  margin-bottom: 3px;
 }
 
-.addContact a#add {
-  background-color: #27ae60;
+.addContact a#add, #hideForm{
   border-radius: 5px;
   font-size: 2em;
   color: white;
   text-decoration: none;
   text-align: center;
-  margin: 1% auto;
-  padding: 10px;
+  padding: 10px 0;
   display: inline-block;
-  width: 98%;
-  transition: .5s all ease;
-}
-
-.addContact a#add:hover{
-  background-color: #2ecc71;
+  /*width: 49%;*/
   transition: .5s all ease;
 }
 
 /* INDIVIDUAL CONTACT */
 .contactContainer {
+  box-sizing: border-box;
   width: 100%;
   margin: 0 auto;
-  border: 1px solid #777;
-  border-radius: 5px;
+  border-top: 5px solid #89D0FF;
+  border-left: 5px solid #89D0FF;
+  border-right: 5px solid #89D0FF;
+  border-radius-top-left: 5px;
+  border-radius-top-right: 5px;
+  transition: .5s all ease;
 }
 
-.basics, .details {
-  width: 100%;
+.contactContainer:last-child{
+  border-bottom: 5px solid #89D0FF;
+}
+
+.contactContainer:hover{
+  background-color: #F8F8F8;
+  transition: .5s all ease;
+}
+
+.basics, .details{
+  box-sizing: border-box;
+}
+
+.basics {
   padding: 1%;
 }
 
-.basics header{
-  font-size: 3em;
-  width: 75%;
-  display: inline-block;
+.details{
+  padding: 0 1%;
 }
 
-.basics > .main {
-  display: inline-block;
-  text-align: right;
+.names, .city, .more{
+  font-size: 2em;
 }
 
-.basics > .main > ul {
-  padding: 0;
+.work{
+  font-size: 1.2em;
 }
 
-.basics > .main > ul li {
-  font-size: 1em;
-  list-style: none;
-}
-
-.basics > .main > ul li.email {
+.city{
   font-style: italic;
-  padding-bottom: 1%;
 }
 
-.basics > footer > a, .details > footer > a{
-  color: #349DC9;
-  text-decoration: none;
+.more{
+  border-radius: 50%;
+  text-align: center;
+  transition: .5s all ease;
+}
+
+.bold{
+  font-weight: 700;
+}
+
+.flip{
+  background-color: #3DB1FF;
+   -webkit-transform: rotate(180deg);
+   -moz-transform: rotate(180deg);
+   -o-transform: rotate(180deg);
+   -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.basics .more:hover{
+  cursor: pointer;
+  background-color: #89D0FF;
+  transition: .5s all ease;
+}
+.email, .company{
+  font-style: italic;
 }
 
 .hidden {
   display: none;
+}
+
+.delete a {
+border-radius: 5px;
+font-size: 1em;
+color: white;
+/*width:80%;*/
+text-decoration: none;
+text-align: center;
+padding: 3px 0;
+display: inline-block;
+/*width: 49%;*/
+transition: .5s all ease;
+}
+
+.delete{
+  margin-bottom: 1%;
 }

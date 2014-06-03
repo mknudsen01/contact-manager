@@ -7,7 +7,8 @@ app.RolodexView = Backbone.View.extend({
     'click #showAddForm': 'showAddForm',
     'click #hideForm': 'hideAddForm',
     'click #add': 'addContact',
-    'keyup #search': 'search'
+    'keyup #search': 'search',
+    'click .letter': 'filterLetter'
   },
 
   initialize: function(){
@@ -42,15 +43,15 @@ app.RolodexView = Backbone.View.extend({
     event.preventDefault();
     var formData = {};
 
-    $('.addContact div').children('input').each( function(i, el) {
+    $('.addContact section').children('input').each( function(i, el) {
       if( $( el ).val() !== ''){
         formData[el.id] = $(el).val();
       }
 
       $(el).val('');
     });
-
     this.collection.create( formData );
+    this.hideAddForm();
   },
 
   showAddForm: function(event){
@@ -60,8 +61,10 @@ app.RolodexView = Backbone.View.extend({
   },
 
   hideAddForm: function(event) {
-    $(event.target).parent().parent().prev().show('fast');
-    $(event.target).parent().parent().hide('slow');
+    var that = this;
+    this.$el.find('form').hide('slow', function(){
+      that.$el.find('#showAddForm').fadeIn('slow');
+    });
   },
 
   clearContacts:function(){
@@ -82,9 +85,9 @@ app.RolodexView = Backbone.View.extend({
   },
 
   filterContacts: function(contact, searchTerm){
-    var toCheck = ["firstName", "lastName", "phone", "email", "title", "company"];
-    for(var i = 0; i< toCheck.length; i++){
-      var attribute = toCheck[i];
+
+    for(var i = 0; i< TO_CHECK.length; i++){
+      var attribute = TO_CHECK[i];
       var value = contact.attributes[attribute].toLowerCase();
       if(value.indexOf(searchTerm.toLowerCase()) > -1){
         console.log("match for ", contact.attributes.lastName, ": ", attribute);
@@ -117,5 +120,10 @@ app.RolodexView = Backbone.View.extend({
     //   return contact.attributes.lastName.toLowerCase();
     // });
     return sorted;
+  },
+
+  filterLetter: function(event){
+    $('.active-letter').toggleClass('active-letter');
+    $(event.target).toggleClass('active-letter');
   }
 });
