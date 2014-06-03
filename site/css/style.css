@@ -1,11 +1,3 @@
-.first{
-  margin: 1% auto 0 auto;
-}
-
-.last{
-  margin: 0 auto 1% auto;
-}
-
 .go{
   background-color: #27ae60;
   transition: .5s all ease;
@@ -17,6 +9,7 @@
 }
 
 .danger{
+  color: white;
   background-color: #c0392b;
   transition: .5s all ease;
 }
@@ -25,11 +18,6 @@
   background-color: #e74c3c;
   transition: .5s all ease;
 }
-
-/*.container {
-  margin: 5% auto;
-  width: 80%;
-}*/
 
 nav{
   background-color: #F2F2F2;
@@ -86,10 +74,7 @@ h1 {
 .letter{
   display: inline-block;
   width: 3.5%;
-  font-size: 1em;
-  /*margin: 0 0.3%;*/
   padding: 1% 0;
-  /*padding-right: 0.8%;*/
   background-color: #95a5a6;
   color: white;
   border-top-left-radius: 10px;
@@ -125,19 +110,17 @@ h1 {
   text-decoration: none;
 }
 
-.addContact div {
-  width: 50%;
-  margin: 0 auto;
+.addContact .inputs {
+  /*margin: 0 auto;*/
 }
 
 .addContact input {
-  width: 100%;
   font-size: 2em;
   border: none;
   margin-bottom: 3px;
 }
 
-.addContact a#add, #hideForm {
+.addContact a#add, #hideForm{
   border-radius: 5px;
   font-size: 2em;
   color: white;
@@ -145,53 +128,101 @@ h1 {
   text-align: center;
   padding: 10px 0;
   display: inline-block;
-  width: 49%;
+  /*width: 49%;*/
   transition: .5s all ease;
 }
 
 /* INDIVIDUAL CONTACT */
 .contactContainer {
+  box-sizing: border-box;
   width: 100%;
   margin: 0 auto;
-  border: 1px solid #777;
-  border-radius: 5px;
+  border-top: 5px solid #89D0FF;
+  border-left: 5px solid #89D0FF;
+  border-right: 5px solid #89D0FF;
+  border-radius-top-left: 5px;
+  border-radius-top-right: 5px;
+  transition: .5s all ease;
 }
 
-.basics, .details {
-  width: 100%;
+.contactContainer:last-child{
+  border-bottom: 5px solid #89D0FF;
+}
+
+.contactContainer:hover{
+  background-color: #F8F8F8;
+  transition: .5s all ease;
+}
+
+.basics, .details{
+  box-sizing: border-box;
+}
+
+.basics {
   padding: 1%;
 }
 
-.basics header{
-  font-size: 3em;
-  width: 75%;
-  display: inline-block;
+.details{
+  padding: 0 1%;
 }
 
-.basics > .main {
-  display: inline-block;
-  text-align: left;
+.names, .city, .more{
+  font-size: 2em;
 }
 
-.basics > .main > ul {
-  padding: 0;
+.work{
+  font-size: 1.2em;
 }
 
-.basics > .main > ul li {
-  font-size: 1em;
-  list-style: none;
-}
-
-.basics > .main > ul li.email {
+.city{
   font-style: italic;
-  padding-bottom: 1%;
 }
 
-.basics > footer > a, .details > footer > a{
-  color: #349DC9;
-  text-decoration: none;
+.more{
+  border-radius: 50%;
+  text-align: center;
+  transition: .5s all ease;
+}
+
+.bold{
+  font-weight: 700;
+}
+
+.flip{
+  background-color: #3DB1FF;
+   -webkit-transform: rotate(180deg);
+   -moz-transform: rotate(180deg);
+   -o-transform: rotate(180deg);
+   -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.basics .more:hover{
+  cursor: pointer;
+  background-color: #89D0FF;
+  transition: .5s all ease;
+}
+.email, .company{
+  font-style: italic;
 }
 
 .hidden {
   display: none;
+}
+
+.delete a {
+border-radius: 5px;
+font-size: 1em;
+color: white;
+/*width:80%;*/
+text-decoration: none;
+text-align: center;
+padding: 3px 0;
+display: inline-block;
+/*width: 49%;*/
+transition: .5s all ease;
+}
+
+.delete{
+  margin-bottom: 1%;
 }

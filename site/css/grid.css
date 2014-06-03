@@ -52,7 +52,7 @@
 }
 
 .col1.last, .col2.last, .col3.last, .col4.last, .col5.last, .col6.last, .col7.last, .col8.last, .col9.last, .col10.last, .col11.last {
-  margin: 0;
+  margin-right: 0;
 }
 
 .col1 { width: 5.5%; }
@@ -72,4 +72,32 @@
   width: 100%;
   height: auto;
   display: block;
+}
+
+.push1{
+  margin-left: 8.5%;
+}
+
+.push3 {
+  margin-left: 25.5%;
+}
+
+.push8{
+  margin-left: 68%;
+}
+
+.push9{
+  margin-left: 76.5%;
+}
+
+.push10{
+  margin-left: 85%;
+}
+
+.push11{
+  margin-left: 93.5%;
+}
+
+.pull3 {
+
 }
