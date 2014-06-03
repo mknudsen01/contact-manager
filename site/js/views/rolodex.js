@@ -7,8 +7,8 @@ app.RolodexView = Backbone.View.extend({
     'click #showAddForm': 'showAddForm',
     'click #hideForm': 'hideAddForm',
     'click #add': 'addContact',
-    'keyup #search': 'search',
-    'click .letter': 'filterLetter'
+    'keyup #search': 'searchEvent',
+    'click .letter': 'filterLastNameEvent'
   },
 
   initialize: function(){
@@ -19,35 +19,33 @@ app.RolodexView = Backbone.View.extend({
 
     this.listenTo( this.collection, 'add', this.render );
     this.listenTo( this.collection, 'reset', this.render);
-    this.listenTo( this.collection, 'change:lastName', this.render);
-    // this.listenTo( this.collection, 'all', this.dothing);
+    this.listenTo( this.collection, 'change:lastName', this.changeLastName);
   },
 
-  render: function() {
-    this.clearContacts();
+  render: function(filterObject) {
+    this._clearContacts();
+
     var contacts = this.collection.sortByAlphabet();
-    _.each(contacts, function( contact ) {
-      this.renderContact( contact );
-    }, this );
+
+    if(filterObject && filterObject.callback){
+      this._renderSome(contacts, filterObject.callback, filterObject.searchTerm);
+    } else {
+      this._renderAll(contacts);
+    }
   },
 
-  renderContact: function( contact ){
-    var contactView = new app.ContactView({
-      model: contact
-    });
-    this.contactViews.push(contactView);
-    this.$el.append( contactView.render().el );
+  changeLastName: function(){
+    this._resetLastNameFilter();
+    this.render();
   },
 
   addContact: function( event ) {
     event.preventDefault();
     var formData = {};
-
     $('.addContact section').children('input').each( function(i, el) {
       if( $( el ).val() !== ''){
         formData[el.id] = $(el).val();
       }
-
       $(el).val('');
     });
     this.collection.create( formData );
@@ -67,63 +65,78 @@ app.RolodexView = Backbone.View.extend({
     });
   },
 
-  clearContacts:function(){
+  searchEvent: function(){
+    this._resetLastNameFilter();
+    var searchTerm = $(event.target).val();
+    var callback = this._filterBySearchTerm;
+    this.render({callback: callback, searchTerm: searchTerm});
+  },
+
+  filterLastNameEvent: function(event){
+    $('.active-letter').toggleClass('active-letter');
+    $(event.target).toggleClass('active-letter');
+    var lastNameLetter = $(event.target).html();
+
+    if(lastNameLetter === "ALL"){
+      this.render();
+    } else {
+      var callback = this._filterByLastName;
+      var searchTerm = lastNameLetter;
+      this.render({callback: callback, searchTerm: searchTerm });
+    }
+  },
+
+  _renderAll: function(contacts){
+    _.each(contacts, function( contact ) {
+      this._renderContact( contact );
+    }, this );
+  },
+
+  _renderSome: function(contacts, callback, searchTerm){
+    _.each(contacts, function( contact ) {
+      if(callback(contact, searchTerm)){
+        this._renderContact( contact );
+      }
+    }, this );
+  },
+
+  _renderContact: function( contact ){
+    var contactView = new app.ContactView({
+      model: contact
+    });
+    this.contactViews.push(contactView);
+    this.$el.append( contactView.render().el );
+  },
+
+  _clearContacts:function(){
     _.each(this.contactViews, function(view){
       view.remove();
     });
     this.contactViews = [];
   },
 
-  search: function(){
-    var view = this;
-    var searchTerm = $(event.target).val();
-    // debugger
-    var matches = _.filter(this.collection.models,function(contact){
-      return view.filterContacts(contact, searchTerm);
-    });
-    this.renderMatches(matches);
+  _filterByLastName: function(contact, lastNameLetter){
+    var firstLetterOfLastName = contact.attributes.lastName[0].toLowerCase();
+    var lastNameSearchLetter = lastNameLetter.toLowerCase();
+    if(firstLetterOfLastName === lastNameSearchLetter){
+      return true;
+    }
+    return false;
   },
 
-  filterContacts: function(contact, searchTerm){
-
+  _filterBySearchTerm: function(contact, searchTerm){
     for(var i = 0; i< TO_CHECK.length; i++){
       var attribute = TO_CHECK[i];
       var value = contact.attributes[attribute].toLowerCase();
       if(value.indexOf(searchTerm.toLowerCase()) > -1){
-        console.log("match for ", contact.attributes.lastName, ": ", attribute);
         return true;
       }
     }
     return false;
   },
 
-  renderMatches: function(matches){
-    this.clearContacts();
-    sortedMatches = this.sortByAlphabet(matches);
-    // var contacts = this.collection.sortByAlphabet();
-    _.each(sortedMatches, function( contact ) {
-      this.renderContact( contact );
-    }, this );
-  },
-
-  sortByAlphabet: function(contacts){
-    var sorted = contacts.sort(function(a,b){
-      if(a.attributes.lastName.toLowerCase() > b.attributes.lastName.toLowerCase()){
-        return 1;
-      }
-      if(a.attributes.lastName.toLowerCase() < b.attributes.lastName.toLowerCase()){
-        return -1;
-      }
-      return 0;
-    });
-    // var sorted = contacts.sortBy(function(contact){
-    //   return contact.attributes.lastName.toLowerCase();
-    // });
-    return sorted;
-  },
-
-  filterLetter: function(event){
+  _resetLastNameFilter: function(){
     $('.active-letter').toggleClass('active-letter');
-    $(event.target).toggleClass('active-letter');
-  }
+    $('.all-letters').toggleClass('active-letter');
+  },
 });

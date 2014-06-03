@@ -7,7 +7,7 @@ $(function() {
     var tab = document.createElement('article');
     tab.className ="letter";
     if(i === 0){
-      tab.className = "letter active-letter";
+      tab.className = "letter all-letters active-letter";
     }
     tab.innerHTML = alphabet[i].toUpperCase();
     $('.letters').append(tab);
