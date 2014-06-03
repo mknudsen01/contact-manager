@@ -8,7 +8,7 @@ app.RolodexView = Backbone.View.extend({
     'click #hideForm': 'hideAddForm',
     'click #add': 'addContact',
     'keyup #search': 'search',
-    'click .letter': 'filterLetter'
+    'click .letter': 'filterLastName'
   },
 
   initialize: function(){
@@ -85,14 +85,36 @@ app.RolodexView = Backbone.View.extend({
   },
 
   filterContacts: function(contact, searchTerm){
-
     for(var i = 0; i< TO_CHECK.length; i++){
       var attribute = TO_CHECK[i];
       var value = contact.attributes[attribute].toLowerCase();
       if(value.indexOf(searchTerm.toLowerCase()) > -1){
-        console.log("match for ", contact.attributes.lastName, ": ", attribute);
         return true;
       }
+    }
+    return false;
+  },
+
+  filterLastName: function(event){
+    $('.active-letter').toggleClass('active-letter');
+    $(event.target).toggleClass('active-letter');
+    var view = this;
+    var lastNameLetter = $('.active-letter').html();
+    if(lastNameLetter === "ALL"){
+      this.render();
+    } else {
+      var matches = _.filter(this.collection.models, function(contact){
+        return view.filterByLetter(contact, lastNameLetter);
+      });
+      this.renderMatches(matches);
+    }
+  },
+
+  filterByLetter: function(contact, lastNameLetter){
+    var firstLetterOfLastName = contact.attributes.lastName[0].toLowerCase();
+    var lastNameSearchLetter = lastNameLetter.toLowerCase();
+    if(firstLetterOfLastName === lastNameSearchLetter){
+      return true;
     }
     return false;
   },
@@ -116,14 +138,6 @@ app.RolodexView = Backbone.View.extend({
       }
       return 0;
     });
-    // var sorted = contacts.sortBy(function(contact){
-    //   return contact.attributes.lastName.toLowerCase();
-    // });
     return sorted;
   },
-
-  filterLetter: function(event){
-    $('.active-letter').toggleClass('active-letter');
-    $(event.target).toggleClass('active-letter');
-  }
 });
