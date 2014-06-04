@@ -44,23 +44,23 @@
   </script>
 
   <script type="text/template" id="contactTemplate">
-      <section data-name="basics" class="padding-all-1 col12">
+      <section data-basics class="padding-all-1 col12">
         <h2 data-name="fullName" class="left col7">
-          <span data-name="firstName" id="firstName"><%= firstName %></span> <span data-name="lastName" id="lastName"><%= lastName %></span>
+          <span data-id="firstName" id="firstName"><%= firstName %></span> <span data-id="lastName" id="lastName"><%= lastName %></span>
         </h2>
-        <h2 data-name="city" id="city" class="left ital col4"><%= city %></h2>
+        <h2 data-id="city" id="city" class="left ital col4"><%= city %></h2>
         <a data-show-more class="glow col1 last">&or;</a>
       </section>
       <section data-details class="padding-lr-1 col12 hidden">
         <section data-name="work-row" class="col12">
-          <h4 data-name="job" class="left col7"><span data-name="title" id="title"><%= title %></span>, <span data-name="company" class="ital" id="company"><%= company %></span></h4>
+          <h4 data-name="job" class="left col7"><span data-id="title" id="title"><%= title %></span>, <span data-id="company" class="ital" id="company"><%= company %></span></h4>
           </span>
         </section>
         <section data-name="email-row" class="col12">
-          <label for="email" class="bold col1">Email:</label><span data-name="email" id="email" class="ital col5"><%= email %></span>
+          <label for="email" class="bold col1">Email:</label><span data-id="email" id="email" class="ital col5"><%= email %></span>
         </section>
         <section data-name="phone-row" class="col12">
-          <label for="phone" class="bold col1">Phone:</label><span data-name="phone" id="phone" class="phone col3 last"><%= phone %></span>
+          <label for="phone" class="bold col1">Phone:</label><span data-id="phone" id="phone" class="phone col3 last"><%= phone %></span>
         </section>
         <section data-name="actions-row" class="col12 last-row">
           <a href="#" data-delete class="delete danger font-size-reset push9 col2 last">Delete Contact</a>
