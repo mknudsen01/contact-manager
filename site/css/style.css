@@ -18,21 +18,10 @@ h1, h2, h3, h4{
   text-align: center;
 }
 
-h1{
-  font-size: 3em;
-}
-
-h2{
-  font-size: 2em;
-}
-
-h3{
-  font-size: 1.5em;
-}
-
-h4{
-  font-size: 1.2em;
-}
+h1{ font-size: 3.0em; }
+h2{ font-size: 2.0em; }
+h3{ font-size: 1.5em; }
+h4{ font-size: 1.2em; }
 
 a{
   font-size: 2em;
@@ -56,7 +45,6 @@ form input:nth-last-of-type(n+2) {
 }
 
 /* SKINS/THEMES */
-/* green to lighter green bg, white text */
 .go{
   background-color: #27ae60;
   transition: .5s all ease;
@@ -68,7 +56,6 @@ form input:nth-last-of-type(n+2) {
   transition: .5s all ease;
 }
 
-/* gray to light blue bg, white text*/
 .info{
   color:white;
   background-color: #95a5a6;
@@ -81,7 +68,6 @@ form input:nth-last-of-type(n+2) {
   transition: 0.3s all ease;
 }
 
-/* no bg to light blue bg, dark grey text*/
 .glow{
   color: #343434;
   transition: .5s all ease;
@@ -92,7 +78,6 @@ form input:nth-last-of-type(n+2) {
   transition: .5s all ease;
 }
 
-/* red to lighter red bg, white text */
 .danger{
   color: white;
   background-color: #c0392b;
@@ -104,14 +89,8 @@ form input:nth-last-of-type(n+2) {
   transition: .5s all ease;
 }
 
-/* light grey bg */
 .bg-light{
   background-color: #F2F2F2;
-}
-.border-blue-5{
-  border-top: 5px solid #89D0FF;
-  border-left: 5px solid #89D0FF;
-  border-right: 5px solid #89D0FF;
 }
 
 .glow-dull{
@@ -123,10 +102,15 @@ form input:nth-last-of-type(n+2) {
   transition: .5s all ease;
 }
 
+.border-blue-5{
+  border-top: 5px solid #89D0FF;
+  border-left: 5px solid #89D0FF;
+  border-right: 5px solid #89D0FF;
+}
+
 .border-blue-5:last-child{
   border-bottom: 5px solid #89D0FF;
 }
-
 
 .flip{
   background-color: #3DB1FF;
