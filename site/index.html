@@ -49,9 +49,9 @@
           <span data-name="firstName" id="firstName"><%= firstName %></span> <span data-name="lastName" id="lastName"><%= lastName %></span>
         </h2>
         <h2 data-name="city" id="city" class="left ital col4"><%= city %></h2>
-        <a data-name="more" class="more glow col1 last">&or;</a>
+        <a data-show-more class="glow col1 last">&or;</a>
       </section>
-      <section data-name="details" class="padding-lr-1 col12 hidden">
+      <section data-details class="padding-lr-1 col12 hidden">
         <section data-name="work-row" class="col12">
           <h4 data-name="job" class="left col7"><span data-name="title" id="title"><%= title %></span>, <span data-name="company" class="ital" id="company"><%= company %></span></h4>
           </span>
@@ -63,7 +63,7 @@
           <label for="phone" class="bold col1">Phone:</label><span data-name="phone" id="phone" class="phone col3 last"><%= phone %></span>
         </section>
         <section data-name="actions-row" class="col12 last-row">
-          <a href="#" data-name="delete" class="delete danger font-size-reset push9 col2 last">Delete Contact</a>
+          <a href="#" data-delete class="delete danger font-size-reset push9 col2 last">Delete Contact</a>
         </section>
       </section>
   </script>

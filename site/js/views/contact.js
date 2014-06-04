@@ -9,9 +9,8 @@ app.ContactView = Backbone.View.extend({
   },
 
   events: {
-    'click .more': 'showDetails',
-    'click #hide': 'hideDetails',
-    'click .delete': 'deleteContact',
+    'click [data-show-more]': 'showDetails',
+    'click [data-delete]': 'deleteContact',
     'dblclick': 'edit',
     'blur .editing': 'close',
     'keypress .editing': 'updateOnEnter'
@@ -24,15 +23,8 @@ app.ContactView = Backbone.View.extend({
 
   showDetails: function(event){
     event.preventDefault();
-    this.$el.find('.details').toggle('fast');
-    this.$el.find('.more').toggleClass('flip');
-
-  },
-
-  hideDetails: function(event) {
-    event.preventDefault();
-    $(event.target).parent().parent().hide('fast');
-    $(event.target).parent().parent().prev().find('footer a').toggleClass('hidden');
+    this.$el.find('[data-details]').toggle('fast');
+    this.$el.find('[data-show-more]').toggleClass('flip');
   },
 
   deleteContact: function(){
