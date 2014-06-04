@@ -23,15 +23,49 @@ app.RolodexView = Backbone.View.extend({
   },
 
   render: function(filterObject) {
+    var renderArgs;
     this._clearContacts();
-
     var contacts = this.collection.sortByAlphabet();
 
     if(filterObject && filterObject.callback){
-      this._renderSome(contacts, filterObject.callback, filterObject.searchTerm);
+      renderArgs = {
+        contacts: contacts,
+        callback: filterObject.callback,
+        searchTerm: filterObject.searchTerm
+      };
+      this._renderSome(renderArgs);
     } else {
-      this._renderAll(contacts);
+      renderArgs = {
+        contacts: contacts
+      };
+      this._renderAll(renderArgs);
     }
+  },
+
+  _renderAll: function(renderArgs){
+    var contacts = renderArgs.contacts;
+    _.each(contacts, function( contact ) {
+      this._renderContact( contact );
+    }, this );
+  },
+
+  _renderSome: function(renderArgs){
+    var contacts = renderArgs.contacts;
+    var callback = renderArgs.callback;
+    var searchTerm = renderArgs.searchTerm;
+    _.each(contacts, function( contact ) {
+      if(callback(contact, searchTerm)){
+        this._renderContact( contact );
+      }
+    }, this );
+  },
+
+  _renderContact: function( contact ){
+    var contactView = new app.ContactView({
+      model: contact
+    });
+    this.contactViews.push(contactView);
+    this.$el.append( contactView.render().el );
   },
 
   changeLastName: function(){
@@ -90,27 +124,6 @@ app.RolodexView = Backbone.View.extend({
     this._renderNoMatches();
   },
 
-  _renderAll: function(contacts){
-    _.each(contacts, function( contact ) {
-      this._renderContact( contact );
-    }, this );
-  },
-
-  _renderSome: function(contacts, callback, searchTerm){
-    _.each(contacts, function( contact ) {
-      if(callback(contact, searchTerm)){
-        this._renderContact( contact );
-      }
-    }, this );
-  },
-
-  _renderContact: function( contact ){
-    var contactView = new app.ContactView({
-      model: contact
-    });
-    this.contactViews.push(contactView);
-    this.$el.append( contactView.render().el );
-  },
 
   _renderNoMatches: function(){
     if(this.contactViews.length === 0){
