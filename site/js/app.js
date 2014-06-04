@@ -1,4 +1,5 @@
 var app = app || {};
+
 var TO_CHECK = ["firstName", "lastName", "phone", "email", "title", "company", "city"];
 var ENTER_KEY = 13;
 $(function() {

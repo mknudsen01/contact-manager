@@ -59,6 +59,7 @@ app.RolodexView = Backbone.View.extend({
   },
 
   hideAddForm: function(event) {
+    event.preventDefault();
     var that = this;
     this.$el.find('form').hide('slow', function(){
       that.$el.find('#showAddForm').fadeIn('slow');
@@ -70,9 +71,11 @@ app.RolodexView = Backbone.View.extend({
     var searchTerm = $(event.target).val();
     var callback = this._filterBySearchTerm;
     this.render({callback: callback, searchTerm: searchTerm});
+    this._renderNoMatches();
   },
 
   filterLastNameEvent: function(event){
+    event.preventDefault();
     $('.active-letter').toggleClass('active-letter');
     $(event.target).toggleClass('active-letter');
     var lastNameLetter = $(event.target).html();
@@ -84,6 +87,7 @@ app.RolodexView = Backbone.View.extend({
       var searchTerm = lastNameLetter;
       this.render({callback: callback, searchTerm: searchTerm });
     }
+    this._renderNoMatches();
   },
 
   _renderAll: function(contacts){
@@ -106,6 +110,14 @@ app.RolodexView = Backbone.View.extend({
     });
     this.contactViews.push(contactView);
     this.$el.append( contactView.render().el );
+  },
+
+  _renderNoMatches: function(){
+    if(this.contactViews.length === 0){
+      var noResultsView = new app.NoResultsView();
+      this.contactViews.push(noResultsView);
+      this.$el.append( noResultsView.render().el );
+    }
   },
 
   _clearContacts:function(){
