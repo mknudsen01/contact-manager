@@ -20,7 +20,7 @@ app.ContactView = Backbone.View.extend({
   },
 
   showDetails: function(event){
-    // if(this.$el.find('.details').display)
+    event.preventDefault();
     this.$el.find('.details').toggle('fast');
     this.$el.find('.more').toggleClass('flip');
 
@@ -38,12 +38,14 @@ app.ContactView = Backbone.View.extend({
   },
 
   edit: function(event){
+    event.preventDefault();
     $(event.target).attr('contenteditable', true);
     $(event.target).addClass('editing');
     $(event.target).focus();
   },
 
   close: function(event){
+    event.preventDefault();
     var element = event.target;
     var attribute = element.id;
     var value = $(event.target).html();
