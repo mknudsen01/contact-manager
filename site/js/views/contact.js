@@ -2,8 +2,11 @@ var app = app || {};
 
 app.ContactView = Backbone.View.extend({
   tagName: 'article',
-  className: 'contactContainer',
+  className: 'box glow-dull col12 border-blue-5',
   template: _.template( $('#contactTemplate' ).html() ),
+  attributes: {
+    "data-name": "contact"
+  },
 
   events: {
     'click .more': 'showDetails',
