@@ -110,8 +110,8 @@ app.RolodexView = Backbone.View.extend({
 
   filterLastNameEvent: function(event){
     event.preventDefault();
-    $('.active-letter').toggleClass('active-letter');
-    $(event.target).toggleClass('active-letter');
+    $('.active').toggleClass('active');
+    $(event.target).toggleClass('active');
     var lastNameLetter = $(event.target).html();
 
     if(lastNameLetter === "ALL"){
@@ -161,7 +161,7 @@ app.RolodexView = Backbone.View.extend({
   },
 
   _resetLastNameFilter: function(){
-    $('.active-letter').toggleClass('active-letter');
-    $('.all-letters').toggleClass('active-letter');
+    $('.active').toggleClass('active');
+    $('.all-letters').toggleClass('active');
   },
 });
