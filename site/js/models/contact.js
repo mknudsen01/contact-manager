@@ -2,10 +2,12 @@ var app = app || {};
 
 app.Contact = Backbone.Model.extend({
   defaults: {
-    name: 'No name',
+    firstName: 'NO NAME',
+    lastName: 'DOE',
     email: 'No email',
     phone: 'No phone number',
     title: 'No title',
+    company: 'No company',
     city: 'No location set'
   },
 

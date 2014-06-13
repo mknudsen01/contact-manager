@@ -62,10 +62,8 @@ app.post( '/contacts', function( request, response ){
     phone: request.body.phone,
     city: request.body.city
   });
-
   return contact.save( function( err ){
     if(!err){
-      console.log( 'created' );
       return response.send( contact );
     } else {
       console.log( err );
@@ -74,7 +72,6 @@ app.post( '/contacts', function( request, response ){
 });
 
 app.put( '/contacts/:id', function( request, response ) {
-  console.log( 'Updating contact ' + request.body.lastName );
   return ContactModel.findById( request.params.id, function( err, contact ) {
     contact.firstName = request.body.firstName || contact.firstName;
     contact.lastName = request.body.lastName || contact.lastName;
@@ -86,7 +83,6 @@ app.put( '/contacts/:id', function( request, response ) {
 
     return contact.save( function( err ) {
       if(!err) {
-        console.log( 'contact updated' );
         return response.send( contact );
       } else {
         console.log( err );
@@ -100,7 +96,6 @@ app.delete( '/contacts/:id', function( request, response ){
   return ContactModel.findById( request.params.id, function( err, contact) {
     return contact.remove( function( err ){
       if(!err){
-        console.log( 'Contact removed' );
         return response.send('');
       } else {
         console.log( err );

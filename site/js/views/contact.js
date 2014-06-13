@@ -9,9 +9,8 @@ app.ContactView = Backbone.View.extend({
   },
 
   events: {
-    'click .more': 'showDetails',
-    'click #hide': 'hideDetails',
-    'click .delete': 'deleteContact',
+    'click [data-show-more]': 'showDetails',
+    'click [data-delete]': 'deleteContact',
     'dblclick': 'edit',
     'blur .editing': 'close',
     'keypress .editing': 'updateOnEnter'
@@ -24,15 +23,8 @@ app.ContactView = Backbone.View.extend({
 
   showDetails: function(event){
     event.preventDefault();
-    this.$el.find('.details').toggle('fast');
-    this.$el.find('.more').toggleClass('flip');
-
-  },
-
-  hideDetails: function(event) {
-    event.preventDefault();
-    $(event.target).parent().parent().hide('fast');
-    $(event.target).parent().parent().prev().find('footer a').toggleClass('hidden');
+    this.$el.find('[data-details]').toggle('fast');
+    this.$el.find('[data-show-more]').toggleClass('flip');
   },
 
   deleteContact: function(){
@@ -42,25 +34,29 @@ app.ContactView = Backbone.View.extend({
 
   edit: function(event){
     event.preventDefault();
-    $(event.target).attr('contenteditable', true);
-    $(event.target).addClass('editing');
-    $(event.target).focus();
+    var element = event.target;
+    var attribute = element.dataset.id;
+    if(attribute){
+      $(element).attr('contenteditable', true);
+      $(element).addClass('editing');
+      $(element).focus();
+    }
   },
 
   close: function(event){
     event.preventDefault();
     var element = event.target;
-    var attribute = element.id;
+    var attribute = element.dataset.id;
     var value = $(event.target).html();
-
+    value = value.replace(/&nbsp;/g," ").trim();
     if(value){
       this.model.save(attribute, value);
     } else {
-      $(event.target).text(this.model.attributes[attribute]);
+      $(element).text(this.model.attributes[attribute]);
     }
 
-    $(event.target).attr('contenteditable', false);
-    $(event.target).removeClass('editing');
+    $(element).attr('contenteditable', false);
+    $(element).removeClass('editing');
   },
 
   updateOnEnter: function(event){

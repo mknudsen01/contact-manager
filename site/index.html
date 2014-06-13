@@ -11,26 +11,26 @@
 </head>
 <body>
   <section class="container">
-    <section data-name="contacts" id="contacts">
+    <section data-contacts-container>
       <nav class="onerow bg-light">
         <h1 class="col3">Contax</h1>
-        <input class="col5" id="search" type="text" placeholder="search" autocomplete="off">
-        <a class="col4 go last" href="#" id="showAddForm">Add a Contact</a>
+        <input data-search-bar class="col5" type="text" placeholder="search" autocomplete="off">
+        <a data-show-add-contact-form class="col4 go last" href="#">Add a Contact</a>
       </nav>
       <section data-name="letters-tabs" class="col12 letters bg-light padding-tb-1 center">
       </section>
       <form data-name="addContact" class="addContact hidden" action="#" autocomplete="off">
         <section class="inputs push3 col6">
-          <input data-name="firstName" id="firstName" class="onerow" placeholder="First Name" type="text"/>
-          <input data-name="lastName" id="lastName" class="onerow" placeholder="Last Name"type="text"/>
-          <input data-name="city" id="city" class="onerow" placeholder="City, State" type="text"/>
-          <input data-name="email" id="email" class="onerow" placeholder="Email" type="text"/>
-          <input data-name="company" id="company" class="onerow" placeholder="Company" type="text"/>
-          <input data-name="title" id="title" class="onerow" placeholder="Title at company" type="text"/>
-          <input data-name="phone" id="phone" class="onerow" placeholder="Phone Number" type="text"/>
+          <input data-id="firstName" class="onerow" placeholder="First Name" type="text"/>
+          <input data-id="lastName" class="onerow" placeholder="Last Name"type="text"/>
+          <input data-id="city" class="onerow" placeholder="City, State" type="text"/>
+          <input data-id="email" class="onerow" placeholder="Email" type="text"/>
+          <input data-id="company" class="onerow" placeholder="Company" type="text"/>
+          <input data-id="title" class="onerow" placeholder="Title at company" type="text"/>
+          <input data-id="phone" class="onerow" placeholder="Phone Number" type="text"/>
           <section class="buttons onerow">
-            <a data-name="add" id="add" class="add go btn col6" href="#">Add Contact</a>
-            <a data-name="hide" id="hideForm" class="cancel danger btn col6 last" href="#">Cancel</a>
+            <a data-add class="add go btn col6" href="#">Add Contact</a>
+            <a data-hide-add-contact-form class="cancel danger btn col6 last" href="#">Cancel</a>
           </section>
         </section>
       </form>
@@ -44,26 +44,26 @@
   </script>
 
   <script type="text/template" id="contactTemplate">
-      <section data-name="basics" class="padding-all-1 col12">
+      <section data-basics class="padding-all-1 col12">
         <h2 data-name="fullName" class="left col7">
-          <span data-name="firstName" id="firstName"><%= firstName %></span> <span data-name="lastName" id="lastName"><%= lastName %></span>
+          <span data-id="firstName"><%= firstName %></span> <span data-id="lastName"><%= lastName %></span>
         </h2>
-        <h2 data-name="city" id="city" class="left ital col4"><%= city %></h2>
-        <a data-name="more" class="more glow col1 last">&or;</a>
+        <h2 data-id="city" class="left ital col4"><%= city %></h2>
+        <a data-show-more class="glow col1 last">&or;</a>
       </section>
-      <section data-name="details" class="padding-lr-1 col12 hidden">
+      <section data-details class="padding-lr-1 col12 hidden">
         <section data-name="work-row" class="col12">
-          <h4 data-name="job" class="left col7"><span data-name="title" id="title"><%= title %></span>, <span data-name="company" class="ital" id="company"><%= company %></span></h4>
+          <h4 data-name="job" class="left col7"><span data-id="title"><%= title %></span>, <span data-id="company" class="ital"><%= company %></span></h4>
           </span>
         </section>
         <section data-name="email-row" class="col12">
-          <label for="email" class="bold col1">Email:</label><span data-name="email" id="email" class="ital col5"><%= email %></span>
+          <label for="email" class="bold col1">Email:</label><span data-id="email" class="ital col5"><%= email %></span>
         </section>
         <section data-name="phone-row" class="col12">
-          <label for="phone" class="bold col1">Phone:</label><span data-name="phone" id="phone" class="phone col3 last"><%= phone %></span>
+          <label for="phone" class="bold col1">Phone:</label><span data-id="phone" class="phone col3 last"><%= phone %></span>
         </section>
         <section data-name="actions-row" class="col12 last-row">
-          <a href="#" data-name="delete" class="delete danger font-size-reset push9 col2 last">Delete Contact</a>
+          <a href="#" data-delete class="delete danger font-size-reset push9 col2 last">Delete Contact</a>
         </section>
       </section>
   </script>
