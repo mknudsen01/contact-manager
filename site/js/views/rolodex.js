@@ -78,7 +78,7 @@ app.RolodexView = Backbone.View.extend({
     var formData = {};
     $('.addContact section').children('input').each( function(i, el) {
       if( $( el ).val() !== ''){
-        formData[el.id] = $(el).val();
+        formData[el.dataset.id] = $(el).val();
       }
       $(el).val('');
     });
