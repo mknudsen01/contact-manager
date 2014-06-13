@@ -1,13 +1,13 @@
 var app = app || {};
 
 app.RolodexView = Backbone.View.extend({
-  el: '#contacts',
+  el: '[data-contacts-container]',
 
   events: {
-    'click #showAddForm': 'showAddForm',
-    'click #hideForm': 'hideAddForm',
-    'click #add': 'addContact',
-    'keyup #search': 'searchEvent',
+    'click [data-show-add-contact-form]': 'showAddForm',
+    'click [data-hide-add-contact-form]': 'hideAddForm',
+    'click [data-add]': 'addContact',
+    'keyup [data-search-bar]': 'searchEvent',
     'click .letter': 'filterLastNameEvent'
   },
 
@@ -95,7 +95,7 @@ app.RolodexView = Backbone.View.extend({
   hideAddForm: function(event) {
     var that = this;
     this.$el.find('form').hide('slow', function(){
-      that.$el.find('#showAddForm').fadeIn('slow');
+      that.$el.find('[data-show-add-contact-form]').fadeIn('slow');
     });
   },
 
