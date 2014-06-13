@@ -93,7 +93,6 @@ app.RolodexView = Backbone.View.extend({
   },
 
   hideAddForm: function(event) {
-    event.preventDefault();
     var that = this;
     this.$el.find('form').hide('slow', function(){
       that.$el.find('#showAddForm').fadeIn('slow');
