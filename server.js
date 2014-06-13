@@ -62,7 +62,6 @@ app.post( '/contacts', function( request, response ){
     phone: request.body.phone,
     city: request.body.city
   });
-
   return contact.save( function( err ){
     if(!err){
       console.log( 'created' );
